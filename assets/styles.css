@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #fff5f8;
+    background-color: #ff004c;
     color: #333;
 }
 
@@ -114,6 +114,8 @@ nav ul li a {
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     transition: transform 0.3s;
+    width: 50%;
+    height: auto; /* keeps aspect ratio */
 }
 
 .kaart:hover {
