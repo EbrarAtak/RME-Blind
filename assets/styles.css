@@ -80,10 +80,11 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-shadow: white;
 }
 
 nav h2 {
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 nav ul {
@@ -92,7 +93,7 @@ nav ul {
 }
 
 nav ul li a {
-    color: white;
+    color: rgb(0, 0, 0);
     margin-left: 20px;
     text-decoration: none;
     font-weight: bold;
@@ -105,7 +106,7 @@ nav ul li a {
 
 .shop h2 {
     margin-bottom: 30px;
-    color: #ff4d6d;
+    color: #000000;
 }
 
 .producten {
@@ -140,7 +141,7 @@ nav ul li a {
 
 .kaart p {
     padding: 0 15px 20px;
-    color: #ffffff;
+    color: #000000;
     font-wei
 }
 
@@ -158,5 +159,7 @@ nav ul li a {
 #valentijn {
     background-color: #fc5f79; /* warm beige */
 }
+
+
 
 
