@@ -8,7 +8,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Pacifico';
 }
 
 body {
@@ -85,18 +85,48 @@ nav {
 
 nav h2 {
     color: rgb(0, 0, 0);
+    border: none;
+    outline: none;
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    border: none;
+}
+
+nav ul li {
+    background-color: transparent;
 }
 
 nav ul li a {
+    background-color: #ff4d6d;
     color: rgb(0, 0, 0);
-    margin-left: 20px;
+    margin-left: 0px;
     text-decoration: none;
     font-weight: bold;
+    display: inline-block;
+    align-items: center;
+    transition: 0.3s;
+    border: none;
+    padding: 6px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 2px;
+}
+
+/* focus / active */
+nav ul li a:focus,
+nav ul li a:focus-visible,
+nav ul li a:active {
+    background-color: #ff4d6d;
+    color: black;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #ff4d6d;
+    color: white;
 }
 
 /* Shop */
@@ -159,6 +189,215 @@ nav ul li a {
 #valentijn {
     background-color: #fc5f79; /* warm beige */
 }
+
+.button {
+    background-color: #ff004c;
+}
+
+.img-wrapper {
+    position: relative;
+}
+
+.cart-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    background-color: #ff004c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+.cart-btn:hover {
+    background-color: #ff4d6d;
+    transform: scale(1.1);
+}
+
+.winkelwagen {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin-top: 40px;
+}
+
+.winkelwagen ul {
+    list-style: none;
+    padding: 0;
+}
+
+.winkelwagen li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.qty-btn {
+    padding: 4px 8px;
+    background: #ff004c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+
+/* TITLE */
+.cart-title {
+    color: #ff004c;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* CART ITEMS */
+#winkelwagen ul,
+#cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+#cart-items li {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ITEM TEXT */
+#cart-items li span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* QUANTITY BUTTONS */
+#cart-items button {
+    background: #ff004c;
+    color: white;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#cart-items button:hover {
+    background: #ff758c;
+    transform: scale(1.1);
+}
+
+
+/* Nav login button */
+.nav-btn {
+    background-color: white;
+    color: #ff004c;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #ff004c;
+    color: white;
+}
+
+/* Checkout knop */
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff004c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.checkout-btn:hover {
+    background-color: #ff758c;
+}
+
+/* Topbar bovenaan */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #ff004c, #ff758c);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px 20px;
+    z-index: 2000;
+}
+
+.top-btn {
+    background-color: white;
+    color: #ff004c;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.top-btn:hover {
+    background-color: #ff004c;
+    color: white;
+}
+
+/* Hartjes over hele scherm */
+.heart {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    background-image: url('https://em-content.zobj.net/thumbs/160/apple/325/red-heart_2764-fe0f.png');
+    background-size: cover;
+    pointer-events: none;
+    z-index: 3000;
+    animation: fall 1.2s linear forwards;
+}
+
+@keyframes fall {
+    0% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+    100% { opacity: 0; transform: translateY(600px) scale(1.5) rotate(360deg); }
+}
+
+
+
+
+
+
+
+
 
 
 

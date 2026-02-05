@@ -1,92 +1,238 @@
-    <!DOCTYPE html>
-    <html lang="nl">
-    <head>
-        <meta charset="UTF-8">
-        <title>Love Times</title>
-        <link rel="stylesheet" href="assets/styles.css">
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="nl">
 
+<head>
+    <meta charset="UTF-8">
+    <title>Love Times</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
 
-        <!-- Intro -->
-        <section id="intro" class="intro">
-            <div class="intro-content">
-                <h1 class="fade-in">Love Times</h1>
-                <p class="fade-in-delay">
-                    Bloemen, knuffels & liefde voor Valentijn 💕
-                </p>
-                <button class="start-btn" onclick="scrollToShop()">Ontdek de liefde</button>
+<body>
+    <!-- Topbar met inlog en uitcheck -->
+    <div class="topbar">
+        <button id="loginBtn" class="top-btn">Inloggen</button>
+        <button id="checkoutBtn" class="top-btn">Uitchecken</button>
+    </div>
+
+    <!-- Intro -->
+    <section id="intro" class="intro">
+        <div class="intro-content">
+            <h1 class="fade-in">Love Times</h1>
+            <p class="fade-in-delay">
+                Bloemen, knuffels & liefde voor Valentijn 💕
+            </p>
+            <button class="start-btn" onclick="scrollToShop()">Ontdek de liefde</button>
+        </div>
+    </section>
+
+    <!-- Navigatie -->
+    <nav>
+        <h2>💖 Love Times</h2>
+        <ul>
+            <li><a href="#bloemen">Bloemen</a></li>
+            <li><a href="#knuffels">Knuffels</a></li>
+            <li><a href="#valentijn">Valentijn</a></li>
+        </ul>
+    </nav>
+
+    <!-- Shop -->
+    <section class="shop" id="bloemen">
+        <h2>🌹 Bloemen</h2>
+        <div class="producten">
+            <div class="kaart" data-name="Rode XXL Rozen" data-price="24.99">
+                <img src="https://dailyflowers.nl/cdn/shop/collections/RedRose-1.jpg?v=1767790871" alt="">
+                <button class="cart-btn">🛒</button>
+                <h3>Rode XXL Rozen</h3>
+                <p>€24.99</p>
             </div>
-        </section>
-
-        <!-- Navigatie -->
-        <nav>
-            <h2>💖 Love Times</h2>
-            <ul>
-                <button><li><a href="#bloemen">Bloemen</a></li></button>
-                <button><li><a href="#knuffels">Knuffels</a></li></button>
-                <button><li><a href="#valentijn">Valentijn</a></li></button>
-            </ul>
-        </nav>
-
-        <!-- Shop -->
-        <section class="shop" id="bloemen">
-            <h2>🌹 Bloemen</h2>
-            <div class="producten">
-                <div class="kaart">
-                    <img src="https://dailyflowers.nl/cdn/shop/collections/RedRose-1.jpg?v=1767790871" 
+            <div class="kaart" data-name="Roze bloemen Mix" data-price="19.99">
+                <img src="https://dailyflowers.nl/cdn/shop/files/ChicBurgundyBeauty20251223-3.jpg?v=1766501509&width=2080"
                     alt="">
-                    <h3>Rode XXL Rozen</h3>
-                    <p>€24,99</p>
-                </div>
-                <div class="kaart">
-                    <img src="https://dailyflowers.nl/cdn/shop/files/ChicBurgundyBeauty20251223-3.jpg?v=1766501509&width=2080" alt="">
-                    <h3>Roze bloemen Mix</h3>
-                    <p>€19,99</p>
-                </div>
+                <button class="cart-btn">🛒</button>
+                <h3>Roze bloemen Mix</h3>
+                <p>€19.99</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="shop" id="knuffels">
-            <h2>🧸 Knuffels</h2>
-            <div class="producten">
-                <div class="kaart">
-                    <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ9ITZC9bsQI8qXgEW9kGOHJcgjREQ9tbYZPQo4a-yBE6N8FxBbdhKgWYFHc843uq0HIYcWB4EYvEHGySuFIgC6TBWWxgegsMVnfU4t1Zwvij0KuAGFG_C3C9AbsDVmOjHOywJwQdo-EAE&usqp=CAc" alt="">
-                    <h3>Rozen Beer</h3>
-                    <p>€14,99</p>
-                </div>
-                <div class="kaart">
-                    <img src="https://mijncadeau.nl/wp-content/uploads/2020/01/Knuffelbeer-Memo-met-accessoires-hart.jpg" alt="">
-                    <h3>Beer met Hartje</h3>
-                    <p>€17,99</p>
-                </div>
+    <section class="shop" id="knuffels">
+        <h2>🧸 Knuffels</h2>
+        <div class="producten">
+            <div class="kaart" data-name="Rozen Beer" data-price="14.99">
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ9ITZC9bsQI8qXgEW9kGOHJcgjREQ9tbYZPQo4a-yBE6N8FxBbdhKgWYFHc843uq0HIYcWB4EYvEHGySuFIgC6TBWWxgegsMVnfU4t1Zwvij0KuAGFG_C3C9AbsDVmOjHOywJwQdo-EAE&usqp=CAc"
+                    alt="">
+                <button class="cart-btn">🛒</button>
+                <h3>Rozen Beer</h3>
+                <p>€14.99</p>
             </div>
-        </section>
-
-        <section class="shop" id="valentijn">
-            <h2>💝 Valentijn Specials</h2>
-            <div class="producten">
-                <div class="kaart">
-                    <img src="https://euroflorist.ergonode.cloud/api/multimedia/file/72e845be-2e08-46b7-8c03-bede04734b5e.jpg" alt="">
-                    <h3>Bloemen + Knuffel</h3>
-                    <p>€34,99</p>
-                </div>
+            <div class="kaart" data-name="Beer met Hartje" data-price="17.99">
+                <img src="https://mijncadeau.nl/wp-content/uploads/2020/01/Knuffelbeer-Memo-met-accessoires-hart.jpg"
+                    alt="">
+                <button class="cart-btn">🛒</button>
+                <h3>Beer met Hartje</h3>
+                <p>€17.99</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <footer>
-            <p>© 2026 Love Times – Made with ❤️</p>
-        </footer>
+    <section class="shop" id="valentijn">
+        <h2>💝 Valentijn Specials</h2>
+        <div class="producten">
+            <div class="kaart" data-name="Bloemen + Knuffel" data-price="34.99">
+                <img src="https://euroflorist.ergonode.cloud/api/multimedia/file/72e845be-2e08-46b7-8c03-bede04734b5e.jpg"
+                    alt="">
+                <button class="cart-btn">🛒</button>
+                <h3>Bloemen + Knuffel</h3>
+                <p>€34.99</p>
+            </div>
+        </div>
+    </section>
 
+    <footer>
+        <p>© 2026 Love Times – Made with ❤️</p>
+    </footer>
 
-    </body>
+    <!-- PRODUCT -->
+    <div class="kaart" data-name="Rozen" data-price="9.99">
+        <div class="img-wrapper">
+            <img src="rozen.jpg" alt="Rozen">
+            <button class="cart-btn">🛒</button>
+        </div>
+        <h3>Rozen</h3>
+        <p>€9,99</p>
+    </div>
+
+    <!-- WINKELWAGEN -->
+    <div class="cart-tab" id="cartTab">
+        🛒 <span id="cart-count">0</span>
+    </div>
 
     <script>
+        const cart = {};
+        const cartList = document.getElementById("cart-items");
+        const totalEl = document.getElementById("total");
+        const cartCount = document.getElementById("cart-count");
+        const cartPanel = document.getElementById("cartPanel");
+        const cartTab = document.getElementById("cartTab");
+
+        cartTab.addEventListener("click", () => {
+            cartPanel.classList.toggle("open");
+        });
+
+        document.querySelectorAll(".cart-btn").forEach(btn => {
+            btn.addEventListener("click", e => {
+                const card = e.target.closest(".kaart");
+                const name = card.dataset.name;
+                const price = parseFloat(card.dataset.price);
+
+                if (!price) return;
+
+                if (!cart[name]) {
+                    cart[name] = { price, qty: 1 };
+                } else {
+                    cart[name].qty++;
+                }
+                renderCart();
+            });
+        });
+
+        function renderCart() {
+            cartList.innerHTML = "";
+            let total = 0;
+            let count = 0;
+
+            for (const item in cart) {
+                const { price, qty } = cart[item];
+                total += price * qty;
+                count += qty;
+
+                const li = document.createElement("li");
+                li.innerHTML = `
+            ${item} (€${price.toFixed(2)})
+            <div>
+                <button onclick="changeQty('${item}', -1)">−</button>
+                ${qty}
+                <button onclick="changeQty('${item}', 1)">+</button>
+            </div>
+        `;
+                cartList.appendChild(li);
+            }
+
+            totalEl.textContent = total.toFixed(2);
+            cartCount.textContent = count;
+        }
+
+        function changeQty(item, amount) {
+            cart[item].qty += amount;
+            if (cart[item].qty <= 0) delete cart[item];
+            renderCart();
+        }
+
+        // Login button click
+document.getElementById("loginBtn").addEventListener("click", () => {
+    alert("Inloggen functie nog niet geïmplementeerd 😉");
+});
+
+// Checkout button click
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+    if (Object.keys(cart).length === 0) {
+        alert("Je winkelmandje is leeg!");
+        return;
+    }
+    alert("Uitchecken succesvol! Bedankt voor je aankoop ❤️");
+    // Winkelwagen leegmaken
+    for (const item in cart) delete cart[item];
+    renderCart();
+});
+
+// Voeg hartjes toe bij toevoegen aan winkelmandje
+function createHeart(x, y) {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 1000);
+}
+
+// Aanpassen van je cart-btn click event
+document.querySelectorAll(".cart-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+        const card = e.target.closest(".kaart");
+        const name = card.querySelector("h3").textContent;
+        const priceText = card.querySelector("p").textContent;
+        const price = parseFloat(priceText.replace("€", "").replace(",", "."));
+
+        if (!price) return;
+
+        if (!cart[name]) {
+            cart[name] = { price, qty: 1 };
+        } else {
+            cart[name].qty++;
+        }
+        renderCart();
+
+        // Hartje bij klik
+        const rect = e.target.getBoundingClientRect();
+        createHeart(rect.left + rect.width/2, rect.top);
+    });
+});
+
+    </script>
+
+
+
+</body>
+
+<script>
     function scrollToShop() {
         document.getElementById("bloemen").scrollIntoView({
             behavior: "smooth"
         });
     }
-    </script>
-    </html>
+</script>
 
+</html>
