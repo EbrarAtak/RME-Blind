@@ -8,46 +8,65 @@
 </head>
 
 <body>
-    <!-- Topbar met inlog en uitcheck -->
-    <div class="topbar">
-        <button id="loginBtn" class="top-btn">Inloggen</button>
-        <button id="checkoutBtn" class="top-btn">Uitchecken</button>
+<!-- Topbar met Inloggen knop -->
+<div class="topbar">
+    <button id="loginBtn" class="top-btn">Inloggen</button>
+</div>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle">Inloggen</h2>
+        
+        <input type="text" id="username" placeholder="Gebruikersnaam">
+        <input type="password" id="password" placeholder="Wachtwoord">
+        <button id="submitLogin">Login</button>
+        
+        <p id="loginMessage"></p>
+        <p>
+            Nog geen account? 
+            <button id="createAccountBtn" class="link-btn">Maak account aan</button>
+        </p>
     </div>
+</div>
 
-    <!-- Intro -->
-    <section id="intro" class="intro">
-        <div class="intro-content">
-            <h1 class="fade-in">Love Times</h1>
-            <p class="fade-in-delay">
-                Bloemen, knuffels & liefde voor Valentijn 💕
-            </p>
-            <button class="start-btn" onclick="scrollToShop()">Ontdek de liefde</button>
-        </div>
-    </section>
 
-    <!-- Navigatie -->
-    <nav>
-        <h2>💖 Love Times</h2>
-        <ul>
-            <li><a href="#bloemen">Bloemen</a></li>
-            <li><a href="#knuffels">Knuffels</a></li>
-            <li><a href="#valentijn">Valentijn</a></li>
-        </ul>
-    </nav>
 
-    <!-- Shop -->
+<!-- Intro -->
+<section id="intro" class="intro">
+    <div class="intro-content">
+        <h1 class="fade-in">Love Times</h1>
+        <p class="fade-in-delay">
+            Bloemen, knuffels & liefde voor Valentijn 💕
+        </p>
+        <button class="start-btn" onclick="scrollToShop()">Ontdek de liefde</button>
+    </div>
+</section>
+
+<!-- Navigatie -->
+<nav>
+    <h2>💖 Love Times</h2>
+    <ul>
+        <li><a href="#bloemen">Bloemen</a></li>
+        <li><a href="#knuffels">Knuffels</a></li>
+        <li><a href="#valentijn">Valentijn</a></li>
+    </ul>
+</nav>
+
+    <!-- Shop Secties -->
     <section class="shop" id="bloemen">
         <h2>🌹 Bloemen</h2>
         <div class="producten">
             <div class="kaart" data-name="Rode XXL Rozen" data-price="24.99">
-                <img src="https://dailyflowers.nl/cdn/shop/collections/RedRose-1.jpg?v=1767790871" alt="">
+                <img src="https://dailyflowers.nl/cdn/shop/collections/RedRose-1.jpg?v=1767790871" alt="Rode XXL Rozen">
                 <button class="cart-btn">🛒</button>
                 <h3>Rode XXL Rozen</h3>
                 <p>€24.99</p>
             </div>
             <div class="kaart" data-name="Roze bloemen Mix" data-price="19.99">
                 <img src="https://dailyflowers.nl/cdn/shop/files/ChicBurgundyBeauty20251223-3.jpg?v=1766501509&width=2080"
-                    alt="">
+                    alt="Roze bloemen Mix">
                 <button class="cart-btn">🛒</button>
                 <h3>Roze bloemen Mix</h3>
                 <p>€19.99</p>
@@ -60,14 +79,14 @@
         <div class="producten">
             <div class="kaart" data-name="Rozen Beer" data-price="14.99">
                 <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ9ITZC9bsQI8qXgEW9kGOHJcgjREQ9tbYZPQo4a-yBE6N8FxBbdhKgWYFHc843uq0HIYcWB4EYvEHGySuFIgC6TBWWxgegsMVnfU4t1Zwvij0KuAGFG_C3C9AbsDVmOjHOywJwQdo-EAE&usqp=CAc"
-                    alt="">
+                    alt="Rozen Beer">
                 <button class="cart-btn">🛒</button>
                 <h3>Rozen Beer</h3>
                 <p>€14.99</p>
             </div>
             <div class="kaart" data-name="Beer met Hartje" data-price="17.99">
                 <img src="https://mijncadeau.nl/wp-content/uploads/2020/01/Knuffelbeer-Memo-met-accessoires-hart.jpg"
-                    alt="">
+                    alt="Beer met Hartje">
                 <button class="cart-btn">🛒</button>
                 <h3>Beer met Hartje</h3>
                 <p>€17.99</p>
@@ -80,7 +99,7 @@
         <div class="producten">
             <div class="kaart" data-name="Bloemen + Knuffel" data-price="34.99">
                 <img src="https://euroflorist.ergonode.cloud/api/multimedia/file/72e845be-2e08-46b7-8c03-bede04734b5e.jpg"
-                    alt="">
+                    alt="Bloemen + Knuffel">
                 <button class="cart-btn">🛒</button>
                 <h3>Bloemen + Knuffel</h3>
                 <p>€34.99</p>
@@ -88,151 +107,232 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>© 2026 Love Times – Made with ❤️</p>
     </footer>
 
-    <!-- PRODUCT -->
-    <div class="kaart" data-name="Rozen" data-price="9.99">
-        <div class="img-wrapper">
-            <img src="rozen.jpg" alt="Rozen">
-            <button class="cart-btn">🛒</button>
-        </div>
-        <h3>Rozen</h3>
-        <p>€9,99</p>
-    </div>
+    <!-- Floating winkelwagen knop -->
+    <button class="floating-cart-btn" id="openCartBtn">🛒</button>
 
-    <!-- WINKELWAGEN -->
-    <div class="cart-tab" id="cartTab">
-        🛒 <span id="cart-count">0</span>
-    </div>
-
-    <script>
-        const cart = {};
-        const cartList = document.getElementById("cart-items");
-        const totalEl = document.getElementById("total");
-        const cartCount = document.getElementById("cart-count");
-        const cartPanel = document.getElementById("cartPanel");
-        const cartTab = document.getElementById("cartTab");
-
-        cartTab.addEventListener("click", () => {
-            cartPanel.classList.toggle("open");
-        });
-
-        document.querySelectorAll(".cart-btn").forEach(btn => {
-            btn.addEventListener("click", e => {
-                const card = e.target.closest(".kaart");
-                const name = card.dataset.name;
-                const price = parseFloat(card.dataset.price);
-
-                if (!price) return;
-
-                if (!cart[name]) {
-                    cart[name] = { price, qty: 1 };
-                } else {
-                    cart[name].qty++;
-                }
-                renderCart();
-            });
-        });
-
-        function renderCart() {
-            cartList.innerHTML = "";
-            let total = 0;
-            let count = 0;
-
-            for (const item in cart) {
-                const { price, qty } = cart[item];
-                total += price * qty;
-                count += qty;
-
-                const li = document.createElement("li");
-                li.innerHTML = `
-            ${item} (€${price.toFixed(2)})
+    <!-- UITKLAPBARE WINKELWAGEN -->
+    <div class="cart-panel" id="cartPanel">
+        <h2 class="cart-title">🛒 Jouw winkelmandje</h2>
+        <ul id="cart-items"></ul>
+        <div class="cart-summary">
             <div>
-                <button onclick="changeQty('${item}', -1)">−</button>
-                ${qty}
-                <button onclick="changeQty('${item}', 1)">+</button>
+                <span>Subtotaal</span>
+                <span>€<span id="subtotal">0.00</span></span>
             </div>
-        `;
-                cartList.appendChild(li);
-            }
+            <div>
+                <span>Korting (10%)</span>
+                <span>- €<span id="discount">0.00</span></span>
+            </div>
+            <div class="total">
+                <span>Totaal</span>
+                <span>€<span id="total">0.00</span></span>
+            </div>
+            <button type="button" class="checkout-btn" id="checkoutBtnPanel">Uitchecken ❤️</button>
+        </div>
+    </div>
 
-            totalEl.textContent = total.toFixed(2);
-            cartCount.textContent = count;
-        }
 
-        function changeQty(item, amount) {
-            cart[item].qty += amount;
-            if (cart[item].qty <= 0) delete cart[item];
-            renderCart();
-        }
 
-        // Login button click
-document.getElementById("loginBtn").addEventListener("click", () => {
-    alert("Inloggen functie nog niet geïmplementeerd 😉");
-});
+    <!-- Scripts -->
+  <script>   
+document.addEventListener("DOMContentLoaded", () => {
+    const cart = {};
+    const cartPanel = document.getElementById("cartPanel");
+    const cartItems = document.getElementById("cart-items");
+    const subtotalEl = document.getElementById("subtotal");
+    const discountEl = document.getElementById("discount");
+    const totalEl = document.getElementById("total");
+    const DISCOUNT_RATE = 0.10;
 
-// Checkout button click
-document.getElementById("checkoutBtn").addEventListener("click", () => {
-    if (Object.keys(cart).length === 0) {
-        alert("Je winkelmandje is leeg!");
-        return;
-    }
-    alert("Uitchecken succesvol! Bedankt voor je aankoop ❤️");
-    // Winkelwagen leegmaken
-    for (const item in cart) delete cart[item];
-    renderCart();
-});
+    const openCartBtn = document.getElementById("openCartBtn");
+    const checkoutBtn = document.getElementById("checkoutBtnPanel");
 
-// Voeg hartjes toe bij toevoegen aan winkelmandje
-function createHeart(x, y) {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.style.left = x + "px";
-    heart.style.top = y + "px";
-    document.body.appendChild(heart);
+    // Open/close winkelwagen
+    openCartBtn.addEventListener("click", () => cartPanel.classList.toggle("open"));
 
-    setTimeout(() => {
-        heart.remove();
-    }, 1000);
-}
-
-// Aanpassen van je cart-btn click event
+    // Product toevoegen
 document.querySelectorAll(".cart-btn").forEach(btn => {
     btn.addEventListener("click", e => {
         const card = e.target.closest(".kaart");
-        const name = card.querySelector("h3").textContent;
-        const priceText = card.querySelector("p").textContent;
-        const price = parseFloat(priceText.replace("€", "").replace(",", "."));
+        const name = card.dataset.name;
+        const price = parseFloat(card.dataset.price);
 
-        if (!price) return;
+        cart[name] = cart[name]
+            ? { ...cart[name], qty: cart[name].qty + 1 }
+            : { price, qty: 1 };
 
-        if (!cart[name]) {
-            cart[name] = { price, qty: 1 };
-        } else {
-            cart[name].qty++;
-        }
-        renderCart();
-
-        // Hartje bij klik
-        const rect = e.target.getBoundingClientRect();
-        createHeart(rect.left + rect.width/2, rect.top);
+        renderCart(); // verwijder cartPanel.classList.add("open");
     });
 });
 
-    </script>
 
-
-
-</body>
-
-<script>
-    function scrollToShop() {
-        document.getElementById("bloemen").scrollIntoView({
-            behavior: "smooth"
-        });
+    function addToCart(name, price) {
+        if (!cart[name]) cart[name] = { price, qty: 1 };
+        else cart[name].qty++;
+        cartPanel.classList.add("open");
+        renderCart();
     }
-</script>
+
+    // Veilig qty up/down, nooit < 1
+    function updateQty(name, change) {
+        if (!cart[name]) return;
+        const newQty = cart[name].qty + change;
+        cart[name].qty = newQty < 1 ? 1 : newQty; // ✅ nooit onder 1
+        renderCart();
+    }
+
+    // Verwijder item volledig
+    function removeItem(name) {
+        delete cart[name];
+        renderCart();
+    }
+
+    // Render winkelwagen
+    function renderCart() {
+        cartItems.innerHTML = "";
+        let subtotal = 0;
+
+        Object.entries(cart).forEach(([name, { price, qty }]) => {
+            subtotal += price * qty;
+
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <span>${name}<br>€${price.toFixed(2)}</span>
+                <div class="qty-controls">
+                    <button type="button" class="qty-minus">−</button>
+                    <span class="qty-number">${qty}</span>
+                    <button type="button" class="qty-plus">+</button>
+                    <button type="button" class="remove-btn">🗑️</button>
+                </div>
+            `;
+
+            const minusBtn = li.querySelector(".qty-minus");
+            const plusBtn = li.querySelector(".qty-plus");
+            const removeBtn = li.querySelector(".remove-btn");
+
+            // Minus knop kan nooit qty < 1
+            minusBtn.disabled = qty <= 1;
+            minusBtn.onclick = () => updateQty(name, -1);
+            plusBtn.onclick = () => updateQty(name, 1);
+            removeBtn.onclick = () => removeItem(name);
+
+            cartItems.appendChild(li);
+        });
+
+        const discount = subtotal * DISCOUNT_RATE;
+        subtotalEl.textContent = subtotal.toFixed(2);
+        discountEl.textContent = discount.toFixed(2);
+        totalEl.textContent = (subtotal - discount).toFixed(2);
+    }
+
+    // Checkout
+    checkoutBtn.addEventListener("click", () => {
+        if (Object.keys(cart).length === 0) return alert("Je winkelmandje is leeg 💔");
+        alert("Bestelling geplaatst ❤️");
+        Object.keys(cart).forEach(name => delete cart[name]);
+        renderCart();
+        cartPanel.classList.remove("open");
+    });
+});
+
+// Login Modal Functionality
+const loginBtn = document.getElementById("loginBtn");
+const loginModal = document.getElementById("loginModal");
+const closeModal = document.querySelector(".close");
+const submitLogin = document.getElementById("submitLogin");
+const loginMessage = document.getElementById("loginMessage");
+const createAccountBtn = document.getElementById("createAccountBtn");
+const modalTitle = document.getElementById("modalTitle");
+
+let isCreatingAccount = false;
+
+// Open modal bij klikken op login knop
+loginBtn.addEventListener("click", () => {
+    loginModal.style.display = "flex";
+    loginMessage.textContent = "";
+    modalTitle.textContent = "Inloggen";
+    submitLogin.textContent = "Login";
+    isCreatingAccount = false;
+});
+
+// Sluit modal bij klikken op ❌
+closeModal.addEventListener("click", () => {
+    loginModal.style.display = "none";
+});
+
+// Sluit modal bij klikken buiten content
+window.addEventListener("click", (e) => {
+    if (e.target === loginModal) {
+        loginModal.style.display = "none";
+    }
+});
+
+// Schakel naar account aanmaken
+createAccountBtn.addEventListener("click", () => {
+    isCreatingAccount = true;
+    modalTitle.textContent = "Account aanmaken";
+    submitLogin.textContent = "Account maken";
+    loginMessage.textContent = "";
+});
+
+// Login / Account aanmaken knop
+submitLogin.addEventListener("click", () => {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (!username || !password) {
+        loginMessage.style.color = "red";
+        loginMessage.textContent = "Vul beide velden in!";
+        return;
+    }
+
+    if (isCreatingAccount) {
+        // Simpele simulatie van account aanmaken
+        loginMessage.style.color = "green";
+        loginMessage.textContent = "Account succesvol aangemaakt!";
+        setTimeout(() => {
+            loginModal.style.display = "none";
+            loginBtn.textContent = "Welkom, " + username;
+            loginBtn.disabled = true;
+        }, 1000);
+    } else {
+        // Simpele login check (alleen admin/1234)
+        if (username === "admin" && password === "1234") {
+            loginMessage.style.color = "green";
+            loginMessage.textContent = "Succesvol ingelogd!";
+            setTimeout(() => {
+                loginModal.style.display = "none";
+                loginBtn.textContent = "Welkom, " + username;
+                loginBtn.disabled = true;
+            }, 1000);
+        } else {
+            loginMessage.style.color = "red";
+            loginMessage.textContent = "Ongeldige gebruikersnaam of wachtwoord!";
+        }
+    }
+});
+
+// Scroll functie voor "Ontdek de liefde" knop
+function scrollToShop() {
+    const shopSection = document.getElementById("bloemen");
+    if (shopSection) {
+        shopSection.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+// Koppel de knop aan de functie
+const startBtn = document.querySelector(".start-btn");
+if (startBtn) {
+    startBtn.addEventListener("click", scrollToShop);
+}
+
+
+    </script>
+</body>
 
 </html>
