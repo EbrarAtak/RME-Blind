@@ -27,7 +27,7 @@ body {
 
 .intro {
     height: 100vh;
-    background: linear-gradient(to bottom right, #ff9aa2, #ffb7c5);
+    background: linear-gradient(180deg, #ffe5ec 0%, #ffc0d1 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,10 +148,10 @@ nav ul li a:hover {
 }
 
 #bloemen { background-color: #ff8fa0; }
-#knuffels { background-color: #ff758c; }
-#Chocolade { background-color: #ff4d6d;}
-#Kaarten { background-color: #ff3366;}
-#valentijn { background-color: #ff004c; }
+#knuffels { background-color: #ff8fa0; }
+#Chocolade { background-color: #ff8fa0;}
+#Kaarten { background-color: #ff8fa0;}
+#valentijn { background-color: #ff8fa0; }
 
 
 .cart-btn {
@@ -338,12 +338,17 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(135deg, #ff004c, #ff758c);
+    height: 60px;
+
     display: flex;
-    justify-content: flex-end;
-    padding: 15px 20px;
-    z-index: 2000;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+    background: #ff4d6d;
+    z-index: 1000;
 }
+
 
 /* Inlog knop */
 .top-btn {
@@ -476,6 +481,41 @@ nav ul li a:hover {
         opacity: 0;
     }
 }
+
+/* =============================== */
+/* Winkelwagen aantal badge */
+/* =============================== */
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: white;
+    color: #ff004c;
+    font-weight: bold;
+    font-size: 14px;
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    pointer-events: none;
+}
+
+.cart-count.hidden {
+    display: none;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+
 
 
 

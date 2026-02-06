@@ -5,11 +5,171 @@
     <meta charset="UTF-8">
     <title>Love Times</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        /* Tabs stijl */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s;
+        }
+
+        .tab.active {
+            background-color: #ff9aca;
+            color: white;
+            font-weight: bold;
+        }
+
+        .shop {
+            display: none;
+        }
+
+        .shop.active {
+            display: block;
+        }
+
+        /* Login modal basis */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .modal-content input {
+            width: 100%;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            border: none;
+            background-color: #ff9aca;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .modal-content .close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #ffebf0;
+            align-items: center;
+        }
+
+        .top-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            background-color: #ff9aca;
+            color: white;
+            cursor: pointer;
+        }
+
+        .floating-cart-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 16px;
+            border-radius: 50%;
+            background-color: #ff9aca;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 500;
+        }
+
+        .cart-count {
+            font-size: 14px;
+            background: white;
+            color: black;
+            border-radius: 50%;
+            padding: 2px 6px;
+            position: absolute;
+            top: -6px;
+            right: -6px;
+        }
+
+        .cart-count.hidden {
+            display: none;
+        }
+
+        .cart-panel {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 350px;
+            height: 100%;
+            background: #fff;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+            padding: 20px;
+            transition: right 0.3s;
+            z-index: 400;
+            overflow-y: auto;
+        }
+
+        .cart-panel.open {
+            right: 0;
+        }
+
+        .cart-summary div, .cart-summary .total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .checkout-btn {
+            margin-top: 15px;
+            width: 100%;
+            background-color: #ff9aca;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Topbar met Inloggen knop -->
+    <!-- Topbar -->
     <div class="topbar">
+        <div class="logo">💖 Love Times</div>
         <button id="loginBtn" class="top-btn">Inloggen</button>
     </div>
 
@@ -18,11 +178,9 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2 id="modalTitle">Inloggen</h2>
-
             <input type="text" id="username" placeholder="Gebruikersnaam">
             <input type="password" id="password" placeholder="Wachtwoord">
             <button id="submitLogin">Login</button>
-
             <p id="loginMessage"></p>
             <p>
                 Nog geen account?
@@ -31,47 +189,41 @@
         </div>
     </div>
 
-
-
-    <!-- Intro -->
+    <!-- Intro sectie -->
     <section id="intro" class="intro">
         <div class="intro-content">
             <h1 class="fade-in">Love Times</h1>
             <p class="fade-in-delay">
                 Bloemen, knuffels & liefde voor Valentijn 💕
             </p>
-            <button class="start-btn" onclick="scrollToShop()">Ontdek de liefde</button>
+            <button class="start-btn">Ontdek de liefde</button>
         </div>
     </section>
 
-    <!-- Navigatie -->
-    <nav>
-        <h2>💖 Love Times</h2>
-        <ul>
-            <li><a href="#bloemen">Bloemen</a></li>
-            <li><a href="#knuffels">Knuffels</a></li>
-            <li><a href="#Chocolade">Chocolade</a></li>
-            <li><a href="#Kaarten">Kaarten</a></li>
-            <li><a href="#valentijn">Valentijn</a></li>
-        </ul>
-    </nav>
+    <!-- Tabs -->
+    <div class="tabs">
+        <div class="tab active" data-tab="bloemen">🌹 Bloemen</div>
+        <div class="tab" data-tab="knuffels">🧸 Knuffels</div>
+        <div class="tab" data-tab="Chocolade">🍫 Chocolade</div>
+        <div class="tab" data-tab="Kaarten">🎴 Kaarten</div>
+        <div class="tab" data-tab="valentijn">💝 Valentijn</div>
+    </div>
 
-    <!-- Shop Secties -->
-    <section class="shop" id="bloemen">
+    <!-- Shop secties -->
+    <section class="shop active" id="bloemen">
         <h2>🌹 Bloemen</h2>
         <div class="producten">
-            <div class="kaart" data-name="Rode XXL Rozen" data-price="24.99">
+            <div class="kaart" data-name="Rode XXL Rozen" data-price="19.99">
                 <img src="https://dailyflowers.nl/cdn/shop/collections/RedRose-1.jpg?v=1767790871" alt="Rode XXL Rozen">
                 <button class="cart-btn">🛒</button>
                 <h3>Rode XXL Rozen</h3>
-                <p>€24.99</p>
+                <p><s>€24.99</s>€19.99</p>
             </div>
-            <div class="kaart" data-name="Roze bloemen Mix" data-price="19.99">
-                <img src="https://dailyflowers.nl/cdn/shop/files/ChicBurgundyBeauty20251223-3.jpg?v=1766501509&width=2080"
-                    alt="Roze bloemen Mix">
+            <div class="kaart" data-name="Roze bloemen Mix" data-price="14.99">
+                <img src="https://dailyflowers.nl/cdn/shop/files/ChicBurgundyBeauty20251223-3.jpg?v=1766501509&width=2080" alt="Roze bloemen Mix">
                 <button class="cart-btn">🛒</button>
                 <h3>Roze bloemen Mix</h3>
-                <p>€19.99</p>
+                <p><s>€19.99</s>€14.99</p>
             </div>
         </div>
     </section>
@@ -79,76 +231,65 @@
     <section class="shop" id="knuffels">
         <h2>🧸 Knuffels</h2>
         <div class="producten">
-            <div class="kaart" data-name="Rozen Beer" data-price="14.99">
-                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ9ITZC9bsQI8qXgEW9kGOHJcgjREQ9tbYZPQo4a-yBE6N8FxBbdhKgWYFHc843uq0HIYcWB4EYvEHGySuFIgC6TBWWxgegsMVnfU4t1Zwvij0KuAGFG_C3C9AbsDVmOjHOywJwQdo-EAE&usqp=CAc"
-                    alt="Rozen Beer">
+            <div class="kaart" data-name="Rozen Beer" data-price="9.99">
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ9ITZC9bsQI8qXgEW9kGOHJcgjREQ9tbYZPQo4a-yBE6N8FxBbdhKgWYFHc843uq0HIYcWB4EYvEHGySuFIgC6TBWWxgegsMVnfU4t1Zwvij0KuAGFG_C3C9AbsDVmOjHOywJwQdo-EAE&usqp=CAc" alt="Rozen Beer">
                 <button class="cart-btn">🛒</button>
                 <h3>Rozen Beer</h3>
-                <p>€14.99</p>
+                <p><s>€14.99</s>€9.99</p>
             </div>
-            <div class="kaart" data-name="Beer met Hartje" data-price="17.99">
-                <img src="https://mijncadeau.nl/wp-content/uploads/2020/01/Knuffelbeer-Memo-met-accessoires-hart.jpg"
-                    alt="Beer met Hartje">
+            <div class="kaart" data-name="Beer met Hartje" data-price="14.99">
+                <img src="https://mijncadeau.nl/wp-content/uploads/2020/01/Knuffelbeer-Memo-met-accessoires-hart.jpg" alt="Beer met Hartje">
                 <button class="cart-btn">🛒</button>
                 <h3>Beer met Hartje</h3>
-                <p>€17.99</p>
+                <p><s>€17.99</s>€14.99</p>
             </div>
         </div>
     </section>
-
 
     <section class="shop" id="Chocolade">
         <h2>🍫 Chocolade</h2>
         <div class="producten">
-            <div class="kaart" data-name="Chocolade Puur" data-price="7.99">
-                <img src="https://cdn.webshopapp.com/shops/319668/files/466726041/660x660x2/manon-intense.jpg"
-                    alt="Chocolade Puur">
+            <div class="kaart" data-name="Chocolade Puur" data-price="6.99">
+                <img src="https://cdn.webshopapp.com/shops/319668/files/466726041/660x660x2/manon-intense.jpg" alt="Chocolade Puur">
                 <button class="cart-btn">🛒</button>
                 <h3>Chocolade Puur</h3>
-                <p>€7.99</p>
+                <p><s>€7.99</s>€6.99</p>
             </div>
-            <div class="kaart" data-name="Chocolade Wit" data-price="7.99">
-                <img src="https://cdn.webshopapp.com/shops/319668/files/422403016/660x660x2/manon-cafe-serre.jpg"
-                    alt="Chocolade Wit">
+            <div class="kaart" data-name="Chocolade Wit" data-price="6.99">
+                <img src="https://cdn.webshopapp.com/shops/319668/files/422403016/660x660x2/manon-cafe-serre.jpg" alt="Chocolade Wit">
                 <button class="cart-btn">🛒</button>
                 <h3>Chocolade Wit</h3>
-                <p>€7.99</p>
+                <p><s>€7.99</s>€6.99</p>
             </div>
         </div>
     </section>
-
 
     <section class="shop" id="Kaarten">
         <h2>🎴 Kaarten</h2>
         <div class="producten">
-            <div class="kaart" data-name="Kaarten #1" data-price="4.99">
-                <img src="https://www.hallmark.nl/on/demandware.static/-/Sites-hallmark-master/default/dw10dafe2c/Assets/AFa_Cards/F1144580_i02_opened_M/350a589ac564ce781cb1034744bf133dce446371_F1144580_i02_opened_M_small.png"
-                    alt="Kaarten #1">
+            <div class="kaart" data-name="Kaarten #1" data-price="3.99">
+                <img src="https://www.hallmark.nl/on/demandware.static/-/Sites-hallmark-master/default/dw10dafe2c/Assets/AFa_Cards/F1144580_i02_opened_M/350a589ac564ce781cb1034744bf133dce446371_F1144580_i02_opened_M_small.png" alt="Kaarten #1">
                 <button class="cart-btn">🛒</button>
                 <h3>Kaarten</h3>
-                <p>€4.99</p>
+                <p><s>€4.99</s>€3.99</p>
             </div>
-            <div class="kaart" data-name="Kaarten #2" data-price="4.99">
-                <img src="https://www.hallmark.nl/on/demandware.static/-/Sites-hallmark-master/default/dw96ec4d10/Assets/AFa_Cards/F1144597_i02_opened_M/269e85a0b9b8752b9e31f911700b151bc3928696_F1144597_i02_opened_M_large.png"
-                    alt="Kaarten #2">
+            <div class="kaart" data-name="Kaarten #2" data-price="3.99">
+                <img src="https://www.hallmark.nl/on/demandware.static/-/Sites-hallmark-master/default/dw96ec4d10/Assets/AFa_Cards/F1144597_i02_opened_M/269e85a0b9b8752b9e31f911700b151bc3928696_F1144597_i02_opened_M_large.png" alt="Kaarten #2">
                 <button class="cart-btn">🛒</button>
                 <h3>Kaarten</h3>
-                <p>€4.99</p>
+                <p><s>€4.99</s>€3.99</p>
             </div>
         </div>
     </section>
 
-
-
     <section class="shop" id="valentijn">
         <h2>💝 Valentijn Specials</h2>
         <div class="producten">
-            <div class="kaart" data-name="Bloemen + Knuffel" data-price="34.99">
-                <img src="https://euroflorist.ergonode.cloud/api/multimedia/file/72e845be-2e08-46b7-8c03-bede04734b5e.jpg"
-                    alt="Bloemen + Knuffel">
+            <div class="kaart" data-name="Bloemen + Knuffel" data-price="29.99">
+                <img src="https://euroflorist.ergonode.cloud/api/multimedia/file/72e845be-2e08-46b7-8c03-bede04734b5e.jpg" alt="Bloemen + Knuffel">
                 <button class="cart-btn">🛒</button>
                 <h3>Bloemen + Knuffel</h3>
-                <p>€34.99</p>
+                <p><s>€34.99</s>€29.99</p>
             </div>
         </div>
     </section>
@@ -159,9 +300,12 @@
     </footer>
 
     <!-- Floating winkelwagen knop -->
-    <button class="floating-cart-btn" id="openCartBtn">🛒</button>
+    <button class="floating-cart-btn" id="openCartBtn">
+        🛒
+        <span class="cart-count hidden" id="cartCount">0</span>
+    </button>
 
-    <!-- UITKLAPBARE WINKELWAGEN -->
+    <!-- Winkelwagen panel -->
     <div class="cart-panel" id="cartPanel">
         <h2 class="cart-title">🛒 Jouw winkelmandje</h2>
         <ul id="cart-items"></ul>
@@ -186,9 +330,26 @@
         <source src="assets/u_byub5wd934-cashier-quotka-chingquot-sound-effect-129698.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+
+            // Tabs functionaliteit
+            const tabs = document.querySelectorAll(".tab");
+            const shops = document.querySelectorAll(".shop");
+
+            tabs.forEach(tab => {
+                tab.addEventListener("click", () => {
+                    tabs.forEach(t => t.classList.remove("active"));
+                    tab.classList.add("active");
+
+                    const target = tab.dataset.tab;
+                    shops.forEach(shop => shop.classList.toggle("active", shop.id === target));
+                    window.scrollTo({ top: tabs[0].offsetTop - 20, behavior: "smooth" });
+                });
+            });
+
+            // Winkelwagen
+            const cartCountEl = document.getElementById("cartCount");
             const cart = {};
             const cartPanel = document.getElementById("cartPanel");
             const cartItems = document.getElementById("cart-items");
@@ -196,82 +357,49 @@
             const discountEl = document.getElementById("discount");
             const totalEl = document.getElementById("total");
             const DISCOUNT_RATE = 0.10;
-
             const openCartBtn = document.getElementById("openCartBtn");
             const checkoutBtn = document.getElementById("checkoutBtnPanel");
 
-            // Open/close winkelwagen
-            openCartBtn.addEventListener("click", () => {
-                cartPanel.classList.toggle("open");
-                spawnHearts(openCartBtn);
-            });
+            function updateCartCount() {
+                let totalItems = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
+                cartCountEl.textContent = totalItems;
+                cartCountEl.classList.toggle("hidden", totalItems === 0);
+            }
 
-            // Product toevoegen
+            openCartBtn.addEventListener("click", () => cartPanel.classList.toggle("open"));
+
             document.querySelectorAll(".cart-btn").forEach(btn => {
                 btn.addEventListener("click", e => {
                     const card = e.target.closest(".kaart");
                     const name = card.dataset.name;
                     const price = parseFloat(card.dataset.price);
-
-                    cart[name] = cart[name]
-                        ? { ...cart[name], qty: cart[name].qty + 1 }
-                        : { price, qty: 1 };
-
-                    renderCart(); // verwijder cartPanel.classList.add("open");
+                    cart[name] = cart[name] ? { ...cart[name], qty: cart[name].qty + 1 } : { price, qty: 1 };
+                    renderCart();
                 });
             });
 
-
-            function addToCart(name, price) {
-                if (!cart[name]) cart[name] = { price, qty: 1 };
-                else cart[name].qty++;
-                cartPanel.classList.add("open");
-                renderCart();
-            }
-
-            // Veilig qty up/down, nooit < 1
-            function updateQty(name, change) {
-                if (!cart[name]) return;
-                const newQty = cart[name].qty + change;
-                cart[name].qty = newQty < 1 ? 1 : newQty; // ✅ nooit onder 1
-                renderCart();
-            }
-
-            // Verwijder item volledig
-            function removeItem(name) {
-                delete cart[name];
-                renderCart();
-            }
-
-            // Render winkelwagen
             function renderCart() {
                 cartItems.innerHTML = "";
                 let subtotal = 0;
-
                 Object.entries(cart).forEach(([name, { price, qty }]) => {
                     subtotal += price * qty;
-
                     const li = document.createElement("li");
                     li.innerHTML = `
-                <span>${name}<br>€${price.toFixed(2)}</span>
-                <div class="qty-controls">
-                    <button type="button" class="qty-minus">−</button>
-                    <span class="qty-number">${qty}</span>
-                    <button type="button" class="qty-plus">+</button>
-                    <button type="button" class="remove-btn">🗑️</button>
-                </div>
-            `;
-
+                        <span>${name}<br>€${price.toFixed(2)}</span>
+                        <div class="qty-controls">
+                            <button type="button" class="qty-minus">−</button>
+                            <span class="qty-number">${qty}</span>
+                            <button type="button" class="qty-plus">+</button>
+                            <button type="button" class="remove-btn">🗑️</button>
+                        </div>
+                    `;
                     const minusBtn = li.querySelector(".qty-minus");
                     const plusBtn = li.querySelector(".qty-plus");
                     const removeBtn = li.querySelector(".remove-btn");
-
-                    // Minus knop kan nooit qty < 1
                     minusBtn.disabled = qty <= 1;
                     minusBtn.onclick = () => updateQty(name, -1);
                     plusBtn.onclick = () => updateQty(name, 1);
                     removeBtn.onclick = () => removeItem(name);
-
                     cartItems.appendChild(li);
                 });
 
@@ -279,152 +407,103 @@
                 subtotalEl.textContent = subtotal.toFixed(2);
                 discountEl.textContent = discount.toFixed(2);
                 totalEl.textContent = (subtotal - discount).toFixed(2);
+
+                updateCartCount();
             }
 
-            // Checkout
-            checkoutBtn.addEventListener("click", () => {
-                if (Object.keys(cart).length === 0) 
-                setTimeout(() => {{
-                    alert("Je winkelmandje is leeg 💔");
-                    return;
-                }}, 300);
+            function updateQty(name, change) {
+                if (!cart[name]) return;
+                cart[name].qty = Math.max(1, cart[name].qty + change);
+                renderCart();
+            }
 
+            function removeItem(name) {
+                delete cart[name];
+                renderCart();
+            }
+
+            checkoutBtn.addEventListener("click", () => {
+                if (Object.keys(cart).length === 0) return alert("Je winkelmandje is leeg 💔");
                 const sound = document.getElementById("checkoutSound");
                 sound.currentTime = 0;
-                sound.volume = 1;
-
-                sound.play()
-                    .then(() => console.log("🔊 Checkout geluid afgespeeld"))
-                    .catch(err => console.error("❌ Audio error:", err));
-
-                // Kleine vertraging zodat geluid hoorbaar blijft
-                    Object.keys(cart).forEach(name => delete cart[name]);
-                    renderCart();
-                    cartPanel.classList.remove("open");
+                sound.play().catch(err => console.error(err));
+                Object.keys(cart).forEach(name => delete cart[name]);
+                renderCart();
+                cartPanel.classList.remove("open");
             });
 
+            // Ontdek de liefde knop
+            const startBtn = document.querySelector(".start-btn");
+            startBtn.addEventListener("click", () => {
+                document.getElementById("bloemen").scrollIntoView({ behavior: "smooth" });
+            });
 
+            // Login modal
+            const loginBtn = document.getElementById("loginBtn");
+            const loginModal = document.getElementById("loginModal");
+            const closeModal = document.querySelector(".close");
+            const submitLogin = document.getElementById("submitLogin");
+            const loginMessage = document.getElementById("loginMessage");
+            const createAccountBtn = document.getElementById("createAccountBtn");
+            const modalTitle = document.getElementById("modalTitle");
+            let isCreatingAccount = false;
 
-        });
+            loginBtn.addEventListener("click", () => {
+                loginModal.style.display = "flex";
+                modalTitle.textContent = "Inloggen";
+                submitLogin.textContent = "Login";
+                loginMessage.textContent = "";
+                isCreatingAccount = false;
+            });
 
-        // Login Modal Functionality
-        const loginBtn = document.getElementById("loginBtn");
-        const loginModal = document.getElementById("loginModal");
-        const closeModal = document.querySelector(".close");
-        const submitLogin = document.getElementById("submitLogin");
-        const loginMessage = document.getElementById("loginMessage");
-        const createAccountBtn = document.getElementById("createAccountBtn");
-        const modalTitle = document.getElementById("modalTitle");
+            closeModal.addEventListener("click", () => loginModal.style.display = "none");
 
-        let isCreatingAccount = false;
+            window.addEventListener("click", e => {
+                if (e.target === loginModal) loginModal.style.display = "none";
+            });
 
-        // Open modal bij klikken op login knop
-        loginBtn.addEventListener("click", () => {
-            loginModal.style.display = "flex";
-            loginMessage.textContent = "";
-            modalTitle.textContent = "Inloggen";
-            submitLogin.textContent = "Login";
-            isCreatingAccount = false;
-        });
+            createAccountBtn.addEventListener("click", () => {
+                isCreatingAccount = true;
+                modalTitle.textContent = "Account aanmaken";
+                submitLogin.textContent = "Account maken";
+                loginMessage.textContent = "";
+            });
 
-        // Sluit modal bij klikken op ❌
-        closeModal.addEventListener("click", () => {
-            loginModal.style.display = "none";
-        });
+            submitLogin.addEventListener("click", () => {
+                const username = document.getElementById("username").value.trim();
+                const password = document.getElementById("password").value.trim();
 
-        // Sluit modal bij klikken buiten content
-        window.addEventListener("click", (e) => {
-            if (e.target === loginModal) {
-                loginModal.style.display = "none";
-            }
-        });
+                if (!username || !password) {
+                    loginMessage.style.color = "red";
+                    loginMessage.textContent = "Vul beide velden in!";
+                    return;
+                }
 
-        // Schakel naar account aanmaken
-        createAccountBtn.addEventListener("click", () => {
-            isCreatingAccount = true;
-            modalTitle.textContent = "Account aanmaken";
-            submitLogin.textContent = "Account maken";
-            loginMessage.textContent = "";
-        });
-
-        // Login / Account aanmaken knop
-        submitLogin.addEventListener("click", () => {
-            const username = document.getElementById("username").value.trim();
-            const password = document.getElementById("password").value.trim();
-
-            if (!username || !password) {
-                loginMessage.style.color = "red";
-                loginMessage.textContent = "Vul beide velden in!";
-                return;
-            }
-
-            if (isCreatingAccount) {
-                // Simpele simulatie van account aanmaken
-                loginMessage.style.color = "green";
-                loginMessage.textContent = "Account succesvol aangemaakt!";
-                setTimeout(() => {
-                    loginModal.style.display = "none";
-                    loginBtn.textContent = "Welkom, " + username;
-                    loginBtn.disabled = true;
-                }, 1000);
-            } else {
-                // Simpele login check (alleen admin/1234)
-                if (username === "admin" && password === "1234") {
+                if (isCreatingAccount) {
                     loginMessage.style.color = "green";
-                    loginMessage.textContent = "Succesvol ingelogd!";
+                    loginMessage.textContent = "Account succesvol aangemaakt!";
                     setTimeout(() => {
                         loginModal.style.display = "none";
                         loginBtn.textContent = "Welkom, " + username;
                         loginBtn.disabled = true;
                     }, 1000);
                 } else {
-                    loginMessage.style.color = "red";
-                    loginMessage.textContent = "Ongeldige gebruikersnaam of wachtwoord!";
+                    if (username === "admin" && password === "1234") {
+                        loginMessage.style.color = "green";
+                        loginMessage.textContent = "Succesvol ingelogd!";
+                        setTimeout(() => {
+                            loginModal.style.display = "none";
+                            loginBtn.textContent = "Welkom, " + username;
+                            loginBtn.disabled = true;
+                        }, 1000);
+                    } else {
+                        loginMessage.style.color = "red";
+                        loginMessage.textContent = "Ongeldige gebruikersnaam of wachtwoord!";
+                    }
                 }
-            }
+            });
+
         });
-
-        // Scroll functie voor "Ontdek de liefde" knop
-        function scrollToShop() {
-            const shopSection = document.getElementById("bloemen");
-            if (shopSection) {
-                shopSection.scrollIntoView({ behavior: "smooth" });
-            }
-        }
-
-        // Koppel de knop aan de functie
-        const startBtn = document.querySelector(".start-btn");
-        if (startBtn) {
-            startBtn.addEventListener("click", scrollToShop);
-        }
-
-
-        function spawnHearts(button) {
-            const rect = button.getBoundingClientRect();
-
-            for (let i = 0; i < 8; i++) {
-                const heart = document.createElement("div");
-                heart.classList.add("heart");
-                heart.textContent = "❤️";
-
-                // Startpositie = winkelwagenknop
-                heart.style.left = rect.left + rect.width / 2 + "px";
-                heart.style.top = rect.top + rect.height / 2 + "px";
-
-                // Willekeurige spreiding
-                const randomX = (Math.random() - 0.5) * 120;
-                heart.style.setProperty("--x", randomX + "px");
-
-                document.body.appendChild(heart);
-
-                // Verwijder na animatie
-                setTimeout(() => heart.remove(), 2400);
-            }
-        }
-
-
-
     </script>
 </body>
-
 </html>
