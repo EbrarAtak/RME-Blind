@@ -90,7 +90,7 @@ nav ul li a {
     padding: 6px 15px;
     font-size: 1rem;
     cursor: pointer;
-    margin: 2px;
+    margin: 0.5px;
     display: inline-block;
     transition: 0.3s;
 }
@@ -149,11 +149,14 @@ nav ul li a:hover {
 
 #bloemen { background-color: #ff8fa0; }
 #knuffels { background-color: #ff758c; }
-#valentijn { background-color: #fc5f79; }
+#Chocolade { background-color: #ff4d6d;}
+#Kaarten { background-color: #ff3366;}
+#valentijn { background-color: #ff004c; }
+
 
 .cart-btn {
     position: absolute;
-    top: 10px;
+    top: 280px;
     right: 10px;
     background-color: #ff004c;
     color: white;
@@ -206,7 +209,7 @@ nav ul li a:hover {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: #ff004c;
+    background: linear-gradient(135deg, #ff004c, #ff758c);
     color: white;
     border: none;
     font-size: 26px;
@@ -344,7 +347,7 @@ nav ul li a:hover {
 
 /* Inlog knop */
 .top-btn {
-    background: linear-gradient(135deg, #ff4d6d, #ff758c);
+    background: linear-gradient(135deg, #ff8ba0, #ff758c);
     color: white;
     font-weight: bold;
     border: none;
@@ -447,6 +450,33 @@ nav ul li a:hover {
     color: #ff3366;      /* subtiele kleurverandering */
     background: none;     /* link-btn blijft transparant */
 }
+
+/* =============================== */
+/* Hartjes animatie bij winkelwagen */
+/* =============================== */
+
+.heart {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    font-size: 20px;
+    color: #ff004c;
+    pointer-events: none;
+    animation: floatUp 1.2s ease-out forwards;
+    z-index: 10000;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), -120px) scale(1.6);
+        opacity: 0;
+    }
+}
+
 
 
 

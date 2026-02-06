@@ -8,51 +8,53 @@
 </head>
 
 <body>
-<!-- Topbar met Inloggen knop -->
-<div class="topbar">
-    <button id="loginBtn" class="top-btn">Inloggen</button>
-</div>
-
-<!-- Login Modal -->
-<div id="loginModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 id="modalTitle">Inloggen</h2>
-        
-        <input type="text" id="username" placeholder="Gebruikersnaam">
-        <input type="password" id="password" placeholder="Wachtwoord">
-        <button id="submitLogin">Login</button>
-        
-        <p id="loginMessage"></p>
-        <p>
-            Nog geen account? 
-            <button id="createAccountBtn" class="link-btn">Maak account aan</button>
-        </p>
+    <!-- Topbar met Inloggen knop -->
+    <div class="topbar">
+        <button id="loginBtn" class="top-btn">Inloggen</button>
     </div>
-</div>
 
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Inloggen</h2>
 
+            <input type="text" id="username" placeholder="Gebruikersnaam">
+            <input type="password" id="password" placeholder="Wachtwoord">
+            <button id="submitLogin">Login</button>
 
-<!-- Intro -->
-<section id="intro" class="intro">
-    <div class="intro-content">
-        <h1 class="fade-in">Love Times</h1>
-        <p class="fade-in-delay">
-            Bloemen, knuffels & liefde voor Valentijn 💕
-        </p>
-        <button class="start-btn" onclick="scrollToShop()">Ontdek de liefde</button>
+            <p id="loginMessage"></p>
+            <p>
+                Nog geen account?
+                <button id="createAccountBtn" class="link-btn">Maak account aan</button>
+            </p>
+        </div>
     </div>
-</section>
 
-<!-- Navigatie -->
-<nav>
-    <h2>💖 Love Times</h2>
-    <ul>
-        <li><a href="#bloemen">Bloemen</a></li>
-        <li><a href="#knuffels">Knuffels</a></li>
-        <li><a href="#valentijn">Valentijn</a></li>
-    </ul>
-</nav>
+
+
+    <!-- Intro -->
+    <section id="intro" class="intro">
+        <div class="intro-content">
+            <h1 class="fade-in">Love Times</h1>
+            <p class="fade-in-delay">
+                Bloemen, knuffels & liefde voor Valentijn 💕
+            </p>
+            <button class="start-btn" onclick="scrollToShop()">Ontdek de liefde</button>
+        </div>
+    </section>
+
+    <!-- Navigatie -->
+    <nav>
+        <h2>💖 Love Times</h2>
+        <ul>
+            <li><a href="#bloemen">Bloemen</a></li>
+            <li><a href="#knuffels">Knuffels</a></li>
+            <li><a href="#Chocolade">Chocolade</a></li>
+            <li><a href="#Kaarten">Kaarten</a></li>
+            <li><a href="#valentijn">Valentijn</a></li>
+        </ul>
+    </nav>
 
     <!-- Shop Secties -->
     <section class="shop" id="bloemen">
@@ -93,6 +95,50 @@
             </div>
         </div>
     </section>
+
+
+    <section class="shop" id="Chocolade">
+        <h2>🍫 Chocolade</h2>
+        <div class="producten">
+            <div class="kaart" data-name="Chocolade Puur" data-price="7.99">
+                <img src="https://cdn.webshopapp.com/shops/319668/files/466726041/660x660x2/manon-intense.jpg"
+                    alt="Chocolade Puur">
+                <button class="cart-btn">🛒</button>
+                <h3>Chocolade Puur</h3>
+                <p>€7.99</p>
+            </div>
+            <div class="kaart" data-name="Chocolade Wit" data-price="7.99">
+                <img src="https://cdn.webshopapp.com/shops/319668/files/422403016/660x660x2/manon-cafe-serre.jpg"
+                    alt="Chocolade Wit">
+                <button class="cart-btn">🛒</button>
+                <h3>Chocolade Wit</h3>
+                <p>€7.99</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="shop" id="Kaarten">
+        <h2>🎴 Kaarten</h2>
+        <div class="producten">
+            <div class="kaart" data-name="Kaarten #1" data-price="4.99">
+                <img src="https://www.hallmark.nl/on/demandware.static/-/Sites-hallmark-master/default/dw10dafe2c/Assets/AFa_Cards/F1144580_i02_opened_M/350a589ac564ce781cb1034744bf133dce446371_F1144580_i02_opened_M_small.png"
+                    alt="Kaarten #1">
+                <button class="cart-btn">🛒</button>
+                <h3>Kaarten</h3>
+                <p>€4.99</p>
+            </div>
+            <div class="kaart" data-name="Kaarten #2" data-price="4.99">
+                <img src="https://www.hallmark.nl/on/demandware.static/-/Sites-hallmark-master/default/dw96ec4d10/Assets/AFa_Cards/F1144597_i02_opened_M/269e85a0b9b8752b9e31f911700b151bc3928696_F1144597_i02_opened_M_large.png"
+                    alt="Kaarten #2">
+                <button class="cart-btn">🛒</button>
+                <h3>Kaarten</h3>
+                <p>€4.99</p>
+            </div>
+        </div>
+    </section>
+
+
 
     <section class="shop" id="valentijn">
         <h2>💝 Valentijn Specials</h2>
@@ -136,72 +182,77 @@
         </div>
     </div>
 
-
+    <audio id="checkoutSound" preload="auto">
+        <source src="assets/u_byub5wd934-cashier-quotka-chingquot-sound-effect-129698.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- Scripts -->
-  <script>   
-document.addEventListener("DOMContentLoaded", () => {
-    const cart = {};
-    const cartPanel = document.getElementById("cartPanel");
-    const cartItems = document.getElementById("cart-items");
-    const subtotalEl = document.getElementById("subtotal");
-    const discountEl = document.getElementById("discount");
-    const totalEl = document.getElementById("total");
-    const DISCOUNT_RATE = 0.10;
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cart = {};
+            const cartPanel = document.getElementById("cartPanel");
+            const cartItems = document.getElementById("cart-items");
+            const subtotalEl = document.getElementById("subtotal");
+            const discountEl = document.getElementById("discount");
+            const totalEl = document.getElementById("total");
+            const DISCOUNT_RATE = 0.10;
 
-    const openCartBtn = document.getElementById("openCartBtn");
-    const checkoutBtn = document.getElementById("checkoutBtnPanel");
+            const openCartBtn = document.getElementById("openCartBtn");
+            const checkoutBtn = document.getElementById("checkoutBtnPanel");
 
-    // Open/close winkelwagen
-    openCartBtn.addEventListener("click", () => cartPanel.classList.toggle("open"));
+            // Open/close winkelwagen
+            openCartBtn.addEventListener("click", () => {
+                cartPanel.classList.toggle("open");
+                spawnHearts(openCartBtn);
+            });
 
-    // Product toevoegen
-document.querySelectorAll(".cart-btn").forEach(btn => {
-    btn.addEventListener("click", e => {
-        const card = e.target.closest(".kaart");
-        const name = card.dataset.name;
-        const price = parseFloat(card.dataset.price);
+            // Product toevoegen
+            document.querySelectorAll(".cart-btn").forEach(btn => {
+                btn.addEventListener("click", e => {
+                    const card = e.target.closest(".kaart");
+                    const name = card.dataset.name;
+                    const price = parseFloat(card.dataset.price);
 
-        cart[name] = cart[name]
-            ? { ...cart[name], qty: cart[name].qty + 1 }
-            : { price, qty: 1 };
+                    cart[name] = cart[name]
+                        ? { ...cart[name], qty: cart[name].qty + 1 }
+                        : { price, qty: 1 };
 
-        renderCart(); // verwijder cartPanel.classList.add("open");
-    });
-});
+                    renderCart(); // verwijder cartPanel.classList.add("open");
+                });
+            });
 
 
-    function addToCart(name, price) {
-        if (!cart[name]) cart[name] = { price, qty: 1 };
-        else cart[name].qty++;
-        cartPanel.classList.add("open");
-        renderCart();
-    }
+            function addToCart(name, price) {
+                if (!cart[name]) cart[name] = { price, qty: 1 };
+                else cart[name].qty++;
+                cartPanel.classList.add("open");
+                renderCart();
+            }
 
-    // Veilig qty up/down, nooit < 1
-    function updateQty(name, change) {
-        if (!cart[name]) return;
-        const newQty = cart[name].qty + change;
-        cart[name].qty = newQty < 1 ? 1 : newQty; // ✅ nooit onder 1
-        renderCart();
-    }
+            // Veilig qty up/down, nooit < 1
+            function updateQty(name, change) {
+                if (!cart[name]) return;
+                const newQty = cart[name].qty + change;
+                cart[name].qty = newQty < 1 ? 1 : newQty; // ✅ nooit onder 1
+                renderCart();
+            }
 
-    // Verwijder item volledig
-    function removeItem(name) {
-        delete cart[name];
-        renderCart();
-    }
+            // Verwijder item volledig
+            function removeItem(name) {
+                delete cart[name];
+                renderCart();
+            }
 
-    // Render winkelwagen
-    function renderCart() {
-        cartItems.innerHTML = "";
-        let subtotal = 0;
+            // Render winkelwagen
+            function renderCart() {
+                cartItems.innerHTML = "";
+                let subtotal = 0;
 
-        Object.entries(cart).forEach(([name, { price, qty }]) => {
-            subtotal += price * qty;
+                Object.entries(cart).forEach(([name, { price, qty }]) => {
+                    subtotal += price * qty;
 
-            const li = document.createElement("li");
-            li.innerHTML = `
+                    const li = document.createElement("li");
+                    li.innerHTML = `
                 <span>${name}<br>€${price.toFixed(2)}</span>
                 <div class="qty-controls">
                     <button type="button" class="qty-minus">−</button>
@@ -211,125 +262,166 @@ document.querySelectorAll(".cart-btn").forEach(btn => {
                 </div>
             `;
 
-            const minusBtn = li.querySelector(".qty-minus");
-            const plusBtn = li.querySelector(".qty-plus");
-            const removeBtn = li.querySelector(".remove-btn");
+                    const minusBtn = li.querySelector(".qty-minus");
+                    const plusBtn = li.querySelector(".qty-plus");
+                    const removeBtn = li.querySelector(".remove-btn");
 
-            // Minus knop kan nooit qty < 1
-            minusBtn.disabled = qty <= 1;
-            minusBtn.onclick = () => updateQty(name, -1);
-            plusBtn.onclick = () => updateQty(name, 1);
-            removeBtn.onclick = () => removeItem(name);
+                    // Minus knop kan nooit qty < 1
+                    minusBtn.disabled = qty <= 1;
+                    minusBtn.onclick = () => updateQty(name, -1);
+                    plusBtn.onclick = () => updateQty(name, 1);
+                    removeBtn.onclick = () => removeItem(name);
 
-            cartItems.appendChild(li);
+                    cartItems.appendChild(li);
+                });
+
+                const discount = subtotal * DISCOUNT_RATE;
+                subtotalEl.textContent = subtotal.toFixed(2);
+                discountEl.textContent = discount.toFixed(2);
+                totalEl.textContent = (subtotal - discount).toFixed(2);
+            }
+
+            // Checkout
+            checkoutBtn.addEventListener("click", () => {
+                if (Object.keys(cart).length === 0) 
+                setTimeout(() => {{
+                    alert("Je winkelmandje is leeg 💔");
+                    return;
+                }}, 300);
+
+                const sound = document.getElementById("checkoutSound");
+                sound.currentTime = 0;
+                sound.volume = 1;
+
+                sound.play()
+                    .then(() => console.log("🔊 Checkout geluid afgespeeld"))
+                    .catch(err => console.error("❌ Audio error:", err));
+
+                // Kleine vertraging zodat geluid hoorbaar blijft
+                    Object.keys(cart).forEach(name => delete cart[name]);
+                    renderCart();
+                    cartPanel.classList.remove("open");
+            });
+
+
+
         });
 
-        const discount = subtotal * DISCOUNT_RATE;
-        subtotalEl.textContent = subtotal.toFixed(2);
-        discountEl.textContent = discount.toFixed(2);
-        totalEl.textContent = (subtotal - discount).toFixed(2);
-    }
+        // Login Modal Functionality
+        const loginBtn = document.getElementById("loginBtn");
+        const loginModal = document.getElementById("loginModal");
+        const closeModal = document.querySelector(".close");
+        const submitLogin = document.getElementById("submitLogin");
+        const loginMessage = document.getElementById("loginMessage");
+        const createAccountBtn = document.getElementById("createAccountBtn");
+        const modalTitle = document.getElementById("modalTitle");
 
-    // Checkout
-    checkoutBtn.addEventListener("click", () => {
-        if (Object.keys(cart).length === 0) return alert("Je winkelmandje is leeg 💔");
-        alert("Bestelling geplaatst ❤️");
-        Object.keys(cart).forEach(name => delete cart[name]);
-        renderCart();
-        cartPanel.classList.remove("open");
-    });
-});
+        let isCreatingAccount = false;
 
-// Login Modal Functionality
-const loginBtn = document.getElementById("loginBtn");
-const loginModal = document.getElementById("loginModal");
-const closeModal = document.querySelector(".close");
-const submitLogin = document.getElementById("submitLogin");
-const loginMessage = document.getElementById("loginMessage");
-const createAccountBtn = document.getElementById("createAccountBtn");
-const modalTitle = document.getElementById("modalTitle");
+        // Open modal bij klikken op login knop
+        loginBtn.addEventListener("click", () => {
+            loginModal.style.display = "flex";
+            loginMessage.textContent = "";
+            modalTitle.textContent = "Inloggen";
+            submitLogin.textContent = "Login";
+            isCreatingAccount = false;
+        });
 
-let isCreatingAccount = false;
-
-// Open modal bij klikken op login knop
-loginBtn.addEventListener("click", () => {
-    loginModal.style.display = "flex";
-    loginMessage.textContent = "";
-    modalTitle.textContent = "Inloggen";
-    submitLogin.textContent = "Login";
-    isCreatingAccount = false;
-});
-
-// Sluit modal bij klikken op ❌
-closeModal.addEventListener("click", () => {
-    loginModal.style.display = "none";
-});
-
-// Sluit modal bij klikken buiten content
-window.addEventListener("click", (e) => {
-    if (e.target === loginModal) {
-        loginModal.style.display = "none";
-    }
-});
-
-// Schakel naar account aanmaken
-createAccountBtn.addEventListener("click", () => {
-    isCreatingAccount = true;
-    modalTitle.textContent = "Account aanmaken";
-    submitLogin.textContent = "Account maken";
-    loginMessage.textContent = "";
-});
-
-// Login / Account aanmaken knop
-submitLogin.addEventListener("click", () => {
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    if (!username || !password) {
-        loginMessage.style.color = "red";
-        loginMessage.textContent = "Vul beide velden in!";
-        return;
-    }
-
-    if (isCreatingAccount) {
-        // Simpele simulatie van account aanmaken
-        loginMessage.style.color = "green";
-        loginMessage.textContent = "Account succesvol aangemaakt!";
-        setTimeout(() => {
+        // Sluit modal bij klikken op ❌
+        closeModal.addEventListener("click", () => {
             loginModal.style.display = "none";
-            loginBtn.textContent = "Welkom, " + username;
-            loginBtn.disabled = true;
-        }, 1000);
-    } else {
-        // Simpele login check (alleen admin/1234)
-        if (username === "admin" && password === "1234") {
-            loginMessage.style.color = "green";
-            loginMessage.textContent = "Succesvol ingelogd!";
-            setTimeout(() => {
+        });
+
+        // Sluit modal bij klikken buiten content
+        window.addEventListener("click", (e) => {
+            if (e.target === loginModal) {
                 loginModal.style.display = "none";
-                loginBtn.textContent = "Welkom, " + username;
-                loginBtn.disabled = true;
-            }, 1000);
-        } else {
-            loginMessage.style.color = "red";
-            loginMessage.textContent = "Ongeldige gebruikersnaam of wachtwoord!";
+            }
+        });
+
+        // Schakel naar account aanmaken
+        createAccountBtn.addEventListener("click", () => {
+            isCreatingAccount = true;
+            modalTitle.textContent = "Account aanmaken";
+            submitLogin.textContent = "Account maken";
+            loginMessage.textContent = "";
+        });
+
+        // Login / Account aanmaken knop
+        submitLogin.addEventListener("click", () => {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!username || !password) {
+                loginMessage.style.color = "red";
+                loginMessage.textContent = "Vul beide velden in!";
+                return;
+            }
+
+            if (isCreatingAccount) {
+                // Simpele simulatie van account aanmaken
+                loginMessage.style.color = "green";
+                loginMessage.textContent = "Account succesvol aangemaakt!";
+                setTimeout(() => {
+                    loginModal.style.display = "none";
+                    loginBtn.textContent = "Welkom, " + username;
+                    loginBtn.disabled = true;
+                }, 1000);
+            } else {
+                // Simpele login check (alleen admin/1234)
+                if (username === "admin" && password === "1234") {
+                    loginMessage.style.color = "green";
+                    loginMessage.textContent = "Succesvol ingelogd!";
+                    setTimeout(() => {
+                        loginModal.style.display = "none";
+                        loginBtn.textContent = "Welkom, " + username;
+                        loginBtn.disabled = true;
+                    }, 1000);
+                } else {
+                    loginMessage.style.color = "red";
+                    loginMessage.textContent = "Ongeldige gebruikersnaam of wachtwoord!";
+                }
+            }
+        });
+
+        // Scroll functie voor "Ontdek de liefde" knop
+        function scrollToShop() {
+            const shopSection = document.getElementById("bloemen");
+            if (shopSection) {
+                shopSection.scrollIntoView({ behavior: "smooth" });
+            }
         }
-    }
-});
 
-// Scroll functie voor "Ontdek de liefde" knop
-function scrollToShop() {
-    const shopSection = document.getElementById("bloemen");
-    if (shopSection) {
-        shopSection.scrollIntoView({ behavior: "smooth" });
-    }
-}
+        // Koppel de knop aan de functie
+        const startBtn = document.querySelector(".start-btn");
+        if (startBtn) {
+            startBtn.addEventListener("click", scrollToShop);
+        }
 
-// Koppel de knop aan de functie
-const startBtn = document.querySelector(".start-btn");
-if (startBtn) {
-    startBtn.addEventListener("click", scrollToShop);
-}
+
+        function spawnHearts(button) {
+            const rect = button.getBoundingClientRect();
+
+            for (let i = 0; i < 8; i++) {
+                const heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.textContent = "❤️";
+
+                // Startpositie = winkelwagenknop
+                heart.style.left = rect.left + rect.width / 2 + "px";
+                heart.style.top = rect.top + rect.height / 2 + "px";
+
+                // Willekeurige spreiding
+                const randomX = (Math.random() - 0.5) * 120;
+                heart.style.setProperty("--x", randomX + "px");
+
+                document.body.appendChild(heart);
+
+                // Verwijder na animatie
+                setTimeout(() => heart.remove(), 2400);
+            }
+        }
+
 
 
     </script>
